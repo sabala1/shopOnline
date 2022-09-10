@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shoponline/constants/gobal_variables.dart';
 import 'package:shoponline/pages/auth/auth_screen.dart';
 import 'package:shoponline/router.dart';
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+    );
     return MaterialApp(
       title: 'ShopOnline',
       theme: ThemeData(
@@ -27,30 +31,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Hello',
-          ),
-        ),
-        body: Column(
-          children: [
-            const Center(
-              child: Text(
-                'Flutter Demo Home Page',
-              ),
-            ),
-            Builder(builder: (context) {
-              return ElevatedButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, AuthScreen.routeName);
-                },
-                child: Text('Click'),
-              );
-            }),
-          ],
-        ),
-      ),
+      home: const AuthScreen(),
     );
   }
 }
