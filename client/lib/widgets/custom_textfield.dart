@@ -29,6 +29,12 @@ class CustomTextField extends StatelessWidget {
           ),
         ),
       ),
+      validator: (val) {
+        if(val == null || val.isEmpty) {
+          return 'กรุณากรอกข้อมูล';
+        }
+        return null;
+      },
     );
   }
 }
