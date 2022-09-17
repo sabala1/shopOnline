@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:shoponline/constants/gobal_variables.dart';
-import 'package:shoponline/pages/auth/auth_screen.dart';
+import 'package:shoponline/pages/admin/admin_screen.dart';
+import 'package:shoponline/pages/user/auth_screen.dart';
+import 'package:shoponline/providers/user_provider.dart';
 import 'package:shoponline/router.dart';
+import 'package:shoponline/service/auth_service.dart';
+import 'package:shoponline/widgets/bottom_bar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (context) => UserProvider(),
+    ),
+  ], child: const MyApp()));
+}
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class _MyAppState extends State<MyApp> {
+
+  final AuthService authService = AuthService();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +53,11 @@ class MyApp extends StatelessWidget {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const AuthScreen(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? Provider.of<UserProvider>(context).user.type == 'user'
+              ? const BottomBar()
+              : const AdminScreen()
+          : const AuthScreen(),
     );
   }
 }

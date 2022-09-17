@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shoponline/constants/show_snackbar.dart';
+import 'package:shoponline/constants/utils.dart';
 
 void httpErrorHandle ({
   required http.Response response,
