@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:shoponline/pages/admin/analytics_screen.dart';
 import 'package:shoponline/pages/admin/orders_screen.dart';
@@ -14,8 +15,7 @@ class AdminScreen extends StatefulWidget {
 
 class _AdminScreenState extends State<AdminScreen> {
   int _page = 0;
-  double bottomBarWidth = 42;
-  double bottomBarBorderWidth = 5;
+  GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
   List<Widget> pages = [
     const PostsScreen(),
@@ -55,76 +55,20 @@ class _AdminScreenState extends State<AdminScreen> {
         ),
       ),
       body: pages[_page],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _page,
-        selectedItemColor: GlobalVariables.selectedNavBarColor,
-        unselectedItemColor: GlobalVariables.unselectedNavBarColor,
-        backgroundColor: GlobalVariables.backgroundColor,
-        iconSize: 28,
+      bottomNavigationBar: CurvedNavigationBar(
+        key: _bottomNavigationKey,
+        index: 0,
+        height: 50,
+        color: GlobalVariables.secondaryColor,
+        buttonBackgroundColor:GlobalVariables.backgroundColor,
+        backgroundColor: Colors.transparent,
         onTap: updatePage,
-        items: [
-          // POSTS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 0
-                        ? GlobalVariables.selectedNavBarColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
-                ),
-              ),
-              child: const Icon(
-                Icons.home_outlined,
-              ),
-            ),
-            label: '',
-          ),
-          // ANALYTICS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 1
-                        ? GlobalVariables.selectedNavBarColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
-                ),
-              ),
-              child: const Icon(
-                Icons.analytics_outlined,
-              ),
-            ),
-            label: '',
-          ),
-          // ORDERS
-          BottomNavigationBarItem(
-            icon: Container(
-              width: bottomBarWidth,
-              decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(
-                    color: _page == 2
-                        ? GlobalVariables.selectedNavBarColor
-                        : GlobalVariables.backgroundColor,
-                    width: bottomBarBorderWidth,
-                  ),
-                ),
-              ),
-              child: const Icon(
-                Icons.all_inbox_outlined,
-              ),
-            ),
-            label: '',
-          ),
-        ],
-      ),
+        items: const [
+            Icon(Icons.home_outlined, size: 28),
+            Icon(Icons.analytics_outlined, size: 28),
+            Icon(Icons.all_inbox_outlined, size: 28),
+          ],
+        ),
     );
   }
 }
