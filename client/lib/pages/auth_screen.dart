@@ -3,7 +3,7 @@ import 'package:shoponline/constants/gobal_variables.dart';
 import 'package:shoponline/service/auth_service.dart';
 import 'package:shoponline/widgets/custom_button.dart';
 
-import '../../widgets/custom_textfield.dart';
+import '../widgets/custom_textfield.dart';
 
 enum Auth {
   signin,
@@ -117,7 +117,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           hintText: 'Password',
                         ),
                         const SizedBox(height: 10),
-                        CustomButon(
+                        CustomButton(
                           text: 'Sign Up',
                           onTap: () {
                             if(_signUpFormKey.currentState!.validate()){
@@ -169,7 +169,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           hintText: 'Password',
                         ),
                         const SizedBox(height: 10),
-                        CustomButon(
+                        CustomButton(
                           text: 'Sign In',
                           onTap: () {
                             if(_signInFormKey.currentState!.validate()){

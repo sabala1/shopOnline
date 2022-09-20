@@ -203,7 +203,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     ),
                   ),
                 ),
-                CustomButon(
+                CustomButton(
                   text: 'บันทึก',
                   onTap: () {
                     if (_addProductFormKey.currentState!.validate() &&

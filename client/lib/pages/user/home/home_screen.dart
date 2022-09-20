@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../constants/gobal_variables.dart';
-import '../../widgets/home/address_box.dart';
-import '../../widgets/carousel_image.dart';
-import '../../widgets/home/deal_of_day.dart';
-import '../../widgets/home/top_categories.dart';
+import '../../../constants/gobal_variables.dart';
+import '../../../widgets/home/address_box.dart';
+import '../../../widgets/carousel_image.dart';
+import '../../../widgets/home/deal_of_day.dart';
+import '../../../widgets/home/top_categories.dart';
+import '../../auth_screen.dart';
+import 'search/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -15,9 +17,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void navigateToSearchScreen(String query) {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -38,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
+                      onFieldSubmitted: navigateToSearchScreen,
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
                           onTap: () {},
@@ -78,11 +84,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(Icons.mic, color: Colors.black, size: 25),
+              GestureDetector(
+                child: Container(
+                  color: Colors.transparent,
+                  height: 42,
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  child: const Icon(Icons.mic, color: Colors.black, size: 25),
+                ),
               ),
             ],
           ),
@@ -93,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
           AddressBox(),
           TopCategories(),
           CarouselImage(),
-          DealOfDay(),
+          //DealOfDay(),
         ],
       ),
     );

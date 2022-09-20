@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../constants/gobal_variables.dart';
-
 class CircularProgressIndicatorLoader extends StatelessWidget {
   const CircularProgressIndicatorLoader({Key? key}) : super(key: key);
 

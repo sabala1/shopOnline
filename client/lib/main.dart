@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shoponline/constants/gobal_variables.dart';
 import 'package:shoponline/pages/admin/admin_screen.dart';
-import 'package:shoponline/pages/user/auth_screen.dart';
+import 'package:shoponline/pages/auth_screen.dart';
 import 'package:shoponline/providers/user_provider.dart';
 import 'package:shoponline/router.dart';
 import 'package:shoponline/service/auth_service.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shoponline/constants/gobal_variables.dart';
 
 import '../pages/user/account_screen.dart';
-import '../pages/user/home_screen.dart';
+import '../pages/user/home/home_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String routeName = '/actual-home';

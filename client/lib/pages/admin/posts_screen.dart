@@ -63,26 +63,27 @@ class _PostsScreenState extends State<PostsScreen> {
                       padding: const EdgeInsets.only(top: 10),
                       child: Column(
                         children: <Widget>[
-                          CarouselSlider(
-                            items: [
-                              SizedBox(
-                                height: 140,
-                                child: SingleProduct(
-                                  image: productData.images[0],
-                                ),
-                              ),
-                            ],
-                            options: CarouselOptions(
-                              viewportFraction: 1,
-                              height: 200,
-                            ),
-                          ),
-                          // SizedBox(
+                 //  CarouselSlider(
+                          //   items: [
+                          //     SizedBox(
                           //       height: 140,
                           //       child: SingleProduct(
-                          //         image: productData.images[index],
+                          //         image: products![index].images[index]
+                                  
                           //       ),
                           //     ),
+                          //   ],
+                          //   options: CarouselOptions(
+                          //     viewportFraction: 1,
+                          //     height: 200,
+                          //   ),
+                          // ), 
+                          SizedBox(
+                                height: 140,
+                                child: SingleProduct(
+                                  image: productData.images[index],
+                                ),
+                              ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8),
                             child: Row(
@@ -90,14 +91,14 @@ class _PostsScreenState extends State<PostsScreen> {
                               children: [
                                 Expanded(
                                   child: Text(
-                                    productData.name,
+                                    products![index].name,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 2,
                                   ),
                                 ),
                                 IconButton(
                                   onPressed: () =>
-                                      deleteProduct(productData, index),
+                                      deleteProduct(products![index], index),
                                   icon: const Icon(
                                     Icons.delete_outline,
                                   ),

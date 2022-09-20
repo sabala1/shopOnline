@@ -1,6 +1,7 @@
 import express from "express";
 import authRouter from "./routes/auth.js";
 import adminRouter from "./routes/admin.js";
+import productRouter from "./routes/product.js";
 import mongoose from "mongoose";
 
 const app = express();
@@ -13,6 +14,7 @@ const DB = "mongodb+srv://macaron:1234@cluster0.ryuyl1q.mongodb.net/shoponline?r
 app.use(express.json());
 app.use(authRouter);
 app.use(adminRouter);
+app.use(productRouter);
 
 //connections
 mongoose.connect(DB).then(() => {
